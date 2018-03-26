@@ -13,7 +13,7 @@ def randomize_params():
 def hello():
     return render_template("api.html")
 
-@app.route("/parameters/all")
+@app.route("/v1/parameters/all")
 def all_parameters():
     response = []
     for i in ("pitch", "roll", "thrust", "yaw"):
@@ -28,7 +28,7 @@ def all_parameters():
     return jsonify(response)
 
 
-@app.route("/parameters/<name>")
+@app.route("/v1/parameters/<name>")
 def get_sensor(name=100):
     response = { "name": name,
                  "values":{
@@ -40,10 +40,10 @@ def get_sensor(name=100):
                 }
     return jsonify(response)
 
-@app.route("/configuration/all")
+@app.route("/v1/configuration/all")
 def get_all_configuration():
     return "hello"
 
-@app.route("/configuration", methods=['GET', 'POST', 'PUT'])
+@app.route("/v1/configuration", methods=['GET', 'POST', 'PUT'])
 def manage_configurations():
     return "siema"
