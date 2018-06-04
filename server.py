@@ -46,7 +46,7 @@ def delete_configutration(id):
 
 @app.route("/configuration-list/sensors/<id>/<sensor>", methods=['PATCH'])
 def update_single_sensor(id, sensor):
-    data = json.loads(request.data)
+    data = request.json
     dao = Dao()
     dao.update_sensor(id, sensor, data['values']['Kp'], data['values']['Ki'],
                       data['values']['Ki'], data['values']['Tf'])
